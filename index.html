@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript">
+    </script>
+</head>
+
+<body>
+    <h1>Cities </h1>
+    <form>
+        Enter a Utah City: <input type="text" id="cityField" value=""> Suggestion: <span id="suggestions">Empty</span>
+        <input id="weatherButton" type="submit" value="Submit">
+    </form>
+    <p>City</p>
+    <textarea id="displayCity">No City</textarea>
+    <p>Current Weather</p>
+    <div id="weather">No weather</div>
+
+    <script>
+        document.getElementById("cityField").addEventListener("keyup", function(event) {
+            event.preventDefault();
+            document.getElementById("suggestions").innerHTML = document.getElementById("cityField").value;
+            const url = "http://bioresearch.byu.edu/cs260/jquery/getcity.cgi?q=" +
+                document.getElementById("cityField").value;
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                }).then(function(json) {
+                    var everything;
+                    everything = "<ul>";
+                    for (let i = 0; i < json.length; i++) {
+                        everything += "<li> " + json[i].city;
+                    };
+
+                    everything += "</ul>";
+                    document.getElementById("suggestions").innerHTML = everything;
+                });
+        });
+    </script>
+</body>
+
+</html>
