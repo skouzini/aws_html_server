@@ -7,8 +7,8 @@
 <body>
     <h1>Has your password been breached?</h1>
     <form>
-        <input id="passHash"type="text" name="hash"/>
-        <input id="submit" type="submit" value="Submit"/>
+        <input id="passHash" type="text" name="hash" placeholder="First 10 #'s of hash"/>
+        <input id="submit" type="submit" value="Check"/>
     </form>
     <p>Number of times this password has been exposed: <span id="exposedNum"></span></p>
 
@@ -17,6 +17,7 @@
     <script>
     
     document.getElementById("submit").addEventListener("click", function(event) {
+        event.preventDefault();
         var hash = document.getElementById("passHash").value;
         console.log(hash);
         var myurl = "https://passwords.xposedornot.com/api/v1/pass/anon/";
@@ -27,7 +28,7 @@
                 return response.json();
             }).then(function(json) {
                 console.log(json);
-                document.getElementById("exposedNum").innerHTML = json.count;
+                document.getElementById("exposedNum").innerHTML = json.SearchPassAnon.count + " times";
             });
     });
     </script>
