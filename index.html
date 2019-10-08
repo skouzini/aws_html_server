@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<head>
+
+</head>
+
+<body>
+    <h1>Has your password been breached?</h1>
+    <form>
+        <input id="passHash"type="text" name="hash"/>
+        <input id="submit" type="submit" value="Submit"/>
+    </form>
+    <p>Number of times this password has been exposed: <span id="exposedNum"></span></p>
+
+
+
+    <script>
+        var hash = document.getElementById("passHash").value;
+        var myurl = "https://passwords.xposedornot.com/api/v1/pass/anon/";
+        myurl += hash;
+        console.log(myurl);
+        fetch(myurl)
+            .then(function(response) {
+                return response.json();
+            }).then(function(json) {
+                console.log(json);
+                document.getElementById("exposedNum").innerHTML = json.count;
+            });
+    </script>
+</body>
+
+</html>
