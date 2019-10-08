@@ -15,7 +15,10 @@
 
 
     <script>
+    
+    document.getElementById("submit").addEventListener("click", function(event) {
         var hash = document.getElementById("passHash").value;
+        console.log(hash);
         var myurl = "https://passwords.xposedornot.com/api/v1/pass/anon/";
         myurl += hash;
         console.log(myurl);
@@ -26,6 +29,7 @@
                 console.log(json);
                 document.getElementById("exposedNum").innerHTML = json.count;
             });
+    });
     </script>
 </body>
 
