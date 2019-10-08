@@ -1,37 +1,35 @@
 <!DOCTYPE html>
-
-<head>
-
-</head>
+<html>
+<title>GIT Demo</title>
 
 <body>
-    <h1>Has your password been breached?</h1>
-    <form>
-        <input id="passHash" type="text" name="hash" placeholder="First 10 #'s of hash"/>
-        <input id="submit" type="submit" value="Check"/>
-    </form>
-    <p>Number of times this password has been exposed: <span id="exposedNum"></span></p>
+<h1>
+Github IDs
+</h1>
+<form id="userform">
+  <input id="user">
+  <input type="submit" value="Go">
+</form>
+<div id="github">
 
-
-
-    <script>
-    
-    document.getElementById("submit").addEventListener("click", function(event) {
-        event.preventDefault();
-        var hash = document.getElementById("passHash").value;
-        console.log(hash);
-        var myurl = "https://passwords.xposedornot.com/api/v1/pass/anon/";
-        myurl += hash;
-        console.log(myurl);
-        fetch(myurl)
-            .then(function(response) {
-                return response.json();
-            }).then(function(json) {
-                console.log(json);
-                document.getElementById("exposedNum").innerHTML = json.SearchPassAnon.count + " times";
-            });
-    });
-    </script>
+</div>
 </body>
 
+<script>
+document.getElementById("userform").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var id = document.getElementById("user").value;
+    console.log("id is",id);
+    var fullURL = "https://api.github.com/users/" + id;
+    console.log(fullURL);
+    fetch(fullURL)
+    .then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      console.log(json);
+      document.getElementById("github").innerHTML = 
+        "<strong>ID= "+json["id"]+"</strong>";
+    });
+  });
+</script>
 </html>
