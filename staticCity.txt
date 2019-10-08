@@ -1,4 +1,0 @@
-[
-{"city":"Provo"},
-{"city":"Lehi"}
-]
