@@ -26,7 +26,7 @@ document.getElementById("weatherButton").addEventListener("click", function(even
     if (cityWeather === "")
         return;
     console.log(cityWeather);
-    
+
     const url = "http://api.openweathermap.org/data/2.5/weather?q=" + cityWeather + ",US&units=imperial" + "&APPID=96b97ea14e90ee24e455054e755cb87f";
     fetch(url)
         .then(function(response) {
@@ -47,7 +47,7 @@ document.getElementById("weatherButton").addEventListener("click", function(even
             results += "</p>";
             document.getElementById("weatherResults").innerHTML = results;
         });
-        
+
     const url2 = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityWeather + ", US&units=imperial" + "&APPID=96b97ea14e90ee24e455054e755cb87f";
     fetch(url2)
         .then(function(response) {
@@ -56,6 +56,7 @@ document.getElementById("weatherButton").addEventListener("click", function(even
             let forecast = "";
             for (let i = 0; i < json.list.length; i++) {
                 forecast += "<h2>" + moment(json.list[i].dt_txt).format('MMMM Do YYYY, h:mm:ss a') + "</h2>";
+                console.log(forecast);
                 forecast += "<p>Temperature: " + json.list[i].main.temp + "</p>";
                 forecast += '<img src="http://openweathermap.org/img/w/' + json.list[i].weather[0].icon + '.png"/>';
             }
