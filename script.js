@@ -1,3 +1,5 @@
+/*global fetch*/
+   
 document.getElementById("cityField").addEventListener("keyup", function(event) {
     event.preventDefault();
     document.getElementById("suggestions").innerHTML = document.getElementById("cityField").value;
@@ -12,7 +14,7 @@ document.getElementById("cityField").addEventListener("keyup", function(event) {
             for (let i = 0; i < json.length; i++) {
 
                 everything += "<li id=result> " + json[i].city;
-            };
+            }
 
 
             everything += "</ul>";
@@ -37,12 +39,12 @@ document.getElementById("weatherButton").addEventListener("click", function(even
             for (let i = 0; i < json.weather.length; i++) {
                 results += '<img src="http://openweathermap.org/img/w/' + json.weather[i].icon + '.png"/>';
             }
-            results += '<h2>' + json.main.temp + " &deg;F</h2>"
-            results += "<p>"
+            results += '<h2>' + json.main.temp + " &deg;F</h2>";
+            results += "<p>";
             for (let i = 0; i < json.weather.length; i++) {
-                results += json.weather[i].description
+                results += json.weather[i].description;
                 if (i !== json.weather.length - 1)
-                    results += ", "
+                    results += ", ";
             }
             results += "</p>";
             document.getElementById("weatherResults").innerHTML = results;
