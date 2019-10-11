@@ -2,23 +2,64 @@
 <html>
 
 <head>
-    <script type="text/javascript">
-    </script>
+    <script type="text/javascript"></script>
+    <link rel="stylesheet" href="./style.css">
     <title>Weather - Skousen, Josh</title>
 </head>
 
 <body>
-    <h1>Cities </h1>
-    <form autocomplete="on">
-        Enter a Utah City: <input type="text" id="cityField" value=""> Suggestion: <span id="suggestions">Empty</span>
-        <input id="weatherButton" type="submit" value="Submit">
-    </form>
-    <p>City</p>
-    <textarea id="displayCity">No City</textarea>
-    <p>Current Weather</p>
-    <div id="weatherResults">No weather</div>
-    <div id="forecastResults">
+  <div class="parent">
+        <div class="header">
+          <div class="title">
+            <h1>h o w ' s
+              <br/>t h e
+              <br/>w e a t h e r ?
+            </h1>
+          </div>
+        </div>
+
+
+    <div class="search">
+      <form autocomplete="off">
+          <h2>Enter a Utah City:</h2>
+          <input type="text" id="cityField" value="">
+          <input id="weatherButton" type="submit" value="Submit">
+      </form>
     </div>
+
+    <div class="suggestions">
+      <h3>Here's a helpful list of suggestions:</h3>
+      <span id="suggestions"><br/> Just start searchin'!</span>
+    </div>
+
+    <div class="current">
+      <h3>Current Weather</h3>
+      <div id="weatherResults">No weather</div>
+    </div>
+
+    <div id="forecastResults">
+      <div class="day1">
+
+      </div>
+
+      <div class="day2">
+
+      </div>
+
+      <div class="day3">
+
+      </div>
+
+      <div class="day4">
+
+      </div>
+
+      <div class="day5">
+
+      </div>
+    </div>
+  </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
     <script text="type/javascript" src="./script.js"></script>

@@ -1,0 +1,220 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif; }
+
+@media only screen and (min-width: 320px) {
+  .parent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr 1fr 2fr 3fr repeat(5, 2fr) 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px; }
+
+  .header {
+    grid-area: 1 / 1 / 2 / 2; }
+
+  .search {
+    grid-area: 2 / 1 / 3 / 2; }
+
+  .suggestions {
+    grid-area: 3 / 1 / 4 / 2; }
+
+  .current {
+    grid-area: 4 / 1 / 5 / 2; }
+
+  .day1 {
+    grid-area: 5 / 1 / 6 / 2; }
+
+  .day2 {
+    grid-area: 6 / 1 / 7 / 2; }
+
+  .day3 {
+    grid-area: 7 / 1 / 8 / 2; }
+
+  .day4 {
+    grid-area: 8 / 1 / 9 / 2; }
+
+  .day5 {
+    grid-area: 9 / 1 / 10 / 2; }
+
+  .footer {
+    grid-area: 10 / 1 / 11 / 2; } }
+@media only screen and (min-width: 768px) {
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px; }
+
+  .header {
+    grid-area: 1 / 1 / 3 / 5; }
+
+  .search {
+    grid-area: 3 / 1 / 4 / 3; }
+
+  .suggestions {
+    grid-area: 4 / 1 / 5 / 3; }
+
+  .current {
+    grid-area: 3 / 3 / 5 / 5; }
+
+  .day1 {
+    grid-area: 5 / 1 / 6 / 5; }
+
+  .day2 {
+    grid-area: 6 / 1 / 7 / 5; }
+
+  .day3 {
+    grid-area: 7 / 1 / 8 / 5; }
+
+  .day4 {
+    grid-area: 8 / 1 / 9 / 5; }
+
+  .day5 {
+    grid-area: 9 / 1 / 10 / 5; }
+
+  .footer {
+    grid-area: 10 / 1 / 11 / 5; } }
+@media only screen and (min-width: 1224px) {
+  .parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px; }
+
+  .header {
+    grid-area: 1 / 1 / 3 / 6; }
+
+  .search {
+    grid-area: 3 / 1 / 4 / 3; }
+
+  .suggestions {
+    grid-area: 4 / 1 / 5 / 3; }
+
+  .current {
+    grid-area: 5 / 1 / 8 / 3; }
+
+  .day1 {
+    grid-area: 3 / 3 / 4 / 6; }
+
+  .day2 {
+    grid-area: 4 / 3 / 5 / 6; }
+
+  .day3 {
+    grid-area: 5 / 3 / 6 / 6; }
+
+  .day4 {
+    grid-area: 6 / 3 / 7 / 6; }
+
+  .day5 {
+    grid-area: 7 / 3 / 8 / 6; }
+
+  .footer {
+    grid-area: 8 / 1 / 9 / 6; }
+
+  .day1, .day2, .day3, .day4, .day5 {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px; }
+
+  .date {
+    grid-area: 1 / 1 / 2 / 2; }
+
+  .mid {
+    grid-area: 1 / 2 / 2 / 3; }
+
+  .iii {
+    grid-area: 1 / 3 / 2 / 4; }
+
+  .vi {
+    grid-area: 1 / 4 / 2 / 5; }
+
+  .ix {
+    grid-area: 1 / 5 / 2 / 6; }
+
+  .noon {
+    grid-area: 1 / 6 / 2 / 7; }
+
+  .III {
+    grid-area: 1 / 7 / 2 / 8; }
+
+  .VI {
+    grid-area: 1 / 8 / 2 / 9; }
+
+  .IX {
+    grid-area: 1 / 9 / 2 / 10; } }
+body {
+  background-color: #5b5b5b; }
+
+h2, h3 {
+  font-weight: lighter; }
+
+.header {
+  color: white;
+  background-color: #89dab2;
+  height: 20vh; }
+  .header .title {
+    width: fit-content;
+    margin: 1vh auto;
+    border-right: 3px solid white;
+    padding-right: 1vh; }
+    .header .title h1 {
+      font-weight: lighter;
+      font-stretch: semi-expanded;
+      line-height: 6vh;
+      text-align: right; }
+
+.search {
+  padding: 1vh;
+  background-color: #998bda;
+  color: white;
+  text-align: center; }
+
+.suggestions {
+  padding: 1vh;
+  text-align: center;
+  background-color: #bb8adb;
+  color: white;
+  position: relative; }
+  .suggestions ul {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    background-color: #bb8adb;
+    color: inherit;
+    border-radius: 5px;
+    list-style: none;
+    font-size: 1.25em; }
+
+.current {
+  background-color: #daac8a;
+  color: white;
+  text-align: center; }
+
+.day1 {
+  background-color: #d9cd88; }
+
+.day2 {
+  background-color: #c6da88; }
+
+.day3 {
+  background-color: #a5da89; }
+
+.day4 {
+  background-color: #8ada90; }
+
+.day5 {
+  background-color: #89dab2; }
+
+.footer {
+  background-color: #3e2e49; }
+
+/*# sourceMappingURL=style.css.map */
