@@ -5,38 +5,11 @@
     <title></title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="./style/master.css">
-    <style media="screen">
-      .isLoading { background: grey; }
-    </style>
   </head>
 
   <body>
-    <div id="app">
-      <h1>A list of things to do</h1>
 
-      <p v-show="activeTodos.length === 0">Way to go! You've finished all your tasks!</p>
-
-      <form @submit.prevent="addItem">
-        <input type="text" v-model="message" placeholder="Enter next task...">
-        <button type="submit">Add item</button>
-      </form>
-
-      <button type="button" @click="showAll()">Show all</button>
-      <button type="button" @click="showActive()">Show active</button>
-      <button type="button" @click="showCompleted()">Show completed</button>
-      <button class="delete" type="button" @click="deleteCompleted()">Delete completed</button>
-
-      <ul>
-        <li v-for="object in filteredTodos" draggable="true" @dragstart="dragItem(object)" @dragover.prevent @drop="dropItem(object)">
-          <input type="checkbox" v-model="object.completed">
-
-          <label :class="{ completed : object.completed }">{{ object.item }}</label>
-
-          <button type="button" name="button" @click="deleteItem(object)" class="delete">X</button>
-        </li>
-      </ul>
-
-    </div>
+    
 
     <script type="text/javascript" src="./js/script.js"></script>
   </body>
