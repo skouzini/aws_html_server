@@ -1,15 +1,17 @@
+/*global Vue*/
+
 var app = new Vue({
   el: '#app',
 
   data: {
     todos: [{
-      item: "make todolist",
+      item: "This is a task item!",
       completed: false
     }, {
-      item: "do lab 4",
+      item: "~Check my box to complete me~",
       completed: false
     }, {
-      item: "read scriptures",
+      item: "Drag and drop me anywhere in the list!",
       completed: false
     }],
     message: '',
