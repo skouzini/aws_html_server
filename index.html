@@ -5,10 +5,6 @@
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
   <title>XKCD Browser - Josh Skousen</title>
-  <script type="text/javascript" src="./js/script.js"></script>
-  <script src="./js/vue.js">
-
-  </script>
 </head>
 
 <body>
@@ -18,16 +14,45 @@
       <p>Loading...</p>
     </div>
     <div v-else>
+      <p>
+        <button @click="firstComic()">First</button>
+        <button @click="previousComic()">Previous</button>
+        <button @click="randomComic()">Random</button>
+        <button @click="nextComic()">Next</button>
+        <button @click="lastComic()">Last</button>
+      </p>
       <h2>{{ current.title }}</h2>
       <img v-bind:src="current.img" v-bind:alt="current.alt">
-      <p>{{ current.alt }}</p>
+      <p>{{current.alt}}</p>
+      <p><i>#{{ current.num }}, drawn on {{ current.day }} {{month}} {{ current.year }}</i></p>
+      <star-rating @rating-selected ="setRating" :rating="average" :round-start-rating="false" :increment="0.5"></star-rating>
+      <p>Average Rating: {{ average }}</p>
+
+      </div>
+      <h3>Add a Comment</h3>
+      <form @submit.prevent="addComment()">
+        <input type="text" v-model="addedName" placeholder="Name...">
+        <textarea v-model="addedComment" placeholder="Enter your comment..."></textarea>
+        <br />
+        <button type="submit" name="button">Comment</button>
+      </form>
+      <h3>Comments</h3>
+      <div v-for="comment in comments[number]">
+        <hr>
+        <p>{{ comment.text }}</p>
+        <p><i>--{{ comment.author }}, {{ comment.time }}</i></p>
+      </div>
     </div>
   </div>
 
+  <footer><a href="https://github.com/skouzini/aws_html_server/tree/vue_xkcd">GitHub</a></footer>
 
+  <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="./js/script.js"></script>
+  <script src="./js/vue.js"></script>
 </body>
 
 </html>
