@@ -6,10 +6,12 @@
     <title></title>
     <link rel="stylesheet" href="./style.css">
     <script text="type/javascript" src="./jokeScript.js" charset="utf-8"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 
 <body>
-    <div class="parent">
+    <div class="parent" id="parent">
         <div class="header">
             <h1>just
                 <hr>
@@ -20,30 +22,37 @@
         <div class="search">
             <form class="">
                 <h4>Joke type:</h4>
-                <input type="radio" name="jokeType" value="any" checked>any</br>
-                <input type="radio" name="jokeType" value="programming">programming</br>
-                <input type="radio" name="jokeType" value="knock-knock">knock-knock</br>
+                <input type="radio" name="jokeType" v-bind:value="topic" checked id="any" @input="topicAny()">
+                    <label for="any">any</label></br>
+                <input type="radio" name="jokeType" v-bind:value="topic" id="programming" @input="topicProgram()">
+                    <label for="programming">programming</label></br>
+                <input type="radio" name="jokeType" v-bind:value="topic" id="knock-knock" @input="topicKnock()">
+                    <label for="knock-knock">knock-knock</label></br>
             </form>
             <br />
-            <button id="getJoke" onclick="getJoke()">Get Joke</button>
+            <button id="getJoke" @click="clicked()">Get Joke</button>
 
         </div>
 
         <div class="setup">
-            <h3 id="setup"></h3>
+            <h3 id="setup">{{ joke.setup }}</h3>
         </div>
 
         <div class="punchline">
-            <h3 id="punchline"></h3>
+            <h3 id="punchline" v-if="visible">{{ joke.punchline }}</h3>
         </div>
 
         <div class="footer">
             <a href="https://github.com/skouzini/joke-project">GitHub Repo</a>
+            <p>All finished!</p>
         </div>
     </div>
 
 
-    <script src="./jokeScript.js" charset="utf-8"></script>
+    <script src="./jokeScript.js" text="type/javascript" charset="utf-8"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </body>
 
 </html>

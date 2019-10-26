@@ -1,30 +1,51 @@
 /*global fetch*/
-/*exported getJoke*/
+/*global Vue*/
+/*global axios*/
 
-function getJoke() {
-    document.getElementById("setup").textContent = "";
-    document.getElementById("punchline").textContent = "";
+var app = new Vue({
 
-    event.preventDefault();
-    const jokeType = document.querySelector('input[name="jokeType"]:checked').value;
-    console.log("value " + jokeType);
+    el: "#parent",
 
-    const URL = "https://official-joke-api.appspot.com/jokes" + (jokeType === "any" ? "" : ("/" + jokeType)) + "/random";
-    // const URL = "https://official-joke-api.appspot.com/jokes/random";
-    fetch(URL).then(response => {
-        return response.json();
-    }).then(json => {
-        json = jokeType === "any" ? json : json[0];
-        console.log(json);
-        document.getElementById("setup").textContent = json.setup;
-        sleep(3000).then(() => {
-            document.getElementById("punchline").textContent = json.punchline;
-        });
-    });
+    data: {
+        topic: "any",
+        visible: false,
+        joke: {},
+    },
 
-
-}
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+    methods: {
+        topicAny() {
+            this.topic = "any";
+            console.log(this.topic);
+        },
+        topicProgram() {
+            this.topic = "programming";
+            console.log(this.topic);
+        },
+        topicKnock() {
+            this.topic = "knock-knock";
+            console.log(this.topic);
+        },
+        clicked() {
+            this.getJoke();
+            this.activate();
+        },
+        getJoke() {
+            this.visible = false;
+            this.joke.setup = "";
+            this.joke.punchline = "";
+            const url = 'https://official-joke-api.appspot.com/jokes' + (this.topic === 'any' ? '' : ('/' + this.topic)) + '/random';
+            
+            let response;
+            if (this.topic === 'any')
+                response = axios.get(url).then(response => this.joke = response.data);
+            else 
+                response = axios.get(url).then(response => this.joke = response.data[0]);
+            console.log(response);
+        },
+        activate() {
+            console.log("starting activation");
+            setTimeout(() => this.visible = true, 3000);
+            console.log("finished activation");
+        },
+    },
+});
